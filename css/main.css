@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: black;
+    color: white;
+    z-index: 1000;
+}
+
+.logo-ink{
+    height: 150px;
+    width: auto;
+    filter: brightness(1.1); /* el logo se vera más brillante*/
+}
+/*
+ 1. NAV Estilos de la navegación principal
+ -> uso flexbox para alinear los elementos
+ -> elimino los puntos de las li con (list-style)
+ -> añado espacios entre los elementos
+ 2. NAV-A Estilos de los enlaces de navegación
+*/
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Cinzel',serif;
+    transition: color 0.3s ease;
+}
+/* Uso el efecto hover para modificar el color, tamaño para los enlaces*/
+.nav-links a:hover {
+    color: #c0c0c0;
+    font-size: 24px;
+   
+}
+
+.icon-burguer {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.icon-burguer img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(1.2);
+}
+
+@media screen and (max-width: 768px){
+    .icon-burguer{
+        display: block;
+    }
+}
+.nav-links {
+    position: fixed;
+    right: -100%;
+    top:  70px;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    padding: 2rem;
+}
+
+.nav-links.active {
+    right: 0;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+
+.nav-links a::after{
+    display: none;
+
+}
