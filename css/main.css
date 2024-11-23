@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: black;
 }
 
 .header {
@@ -9,16 +10,30 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: black;
     color: white;
-    z-index: 1000;
+    z-index: 1000; /* Capa de apilamiento*/
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;  
 }
+
 
 .logo-ink{
     height: 150px;
     width: auto;
     filter: brightness(1.1); /* el logo se vera más brillante*/
 }
+
+.button-help{
+    background-color: rgb(172, 6, 6);
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
 /*
  1. NAV Estilos de la navegación principal
  -> uso flexbox para alinear los elementos
@@ -37,7 +52,7 @@
     text-decoration: none;
     font-size: 18px;
     font-family: 'Cinzel',serif;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, font size 0.3s ease;
 }
 /* Uso el efecto hover para modificar el color, tamaño para los enlaces*/
 .nav-links a:hover {
@@ -62,32 +77,53 @@
 }
 
 @media screen and (max-width: 768px){
+    .header{
+        padding: 1rem;
+    }
+    .button-help{
+        display: none; /*Oculto el boton en la versión movil*/
+    }
     .icon-burguer{
         display: block;
     }
-}
-.nav-links {
-    position: fixed;
-    right: -100%;
-    top:  70px;
-    flex-direction: column;
-    background-color: black;
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-    padding: 2rem;
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top:  70px;
+        flex-direction: column;
+        background-color: black;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 2rem;
+        gap:1rem;
+    }
+    .nav-links.active{
+        display: flex;
+    }
+    
 }
 
 .nav-links.active {
     right: 0;
 }
 
-.nav-links a {
+.nav-links a { 
     font-size: 1.5rem;
     padding: 1rem 0;
 }
 
-.nav-links a::after{
-    display: none;
 
+@media (min-width: 768px) {
+    .icon-burguer{
+        display: none;
+    }
+    .nav-links{
+        display: flex;
+        position: static;/* Aqui reseteo la posición fixed de la versión movil*/
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+    }
+    
 }
